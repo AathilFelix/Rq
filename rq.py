@@ -130,25 +130,18 @@ def swiggy_api():
 
 	request = rq.post(url,headers=_headers,json=data)
 
-	if (request.json())['statusCode'] == '1':
-		data = {"mobile":""+mobno,"name":"hello","email":"hello@yahoo.com","password":"123454321","referral":"","otp":"","_csrf":"O54pXz6EanUl-fmSzcuQA2V5KUrLqWlEWbWEK-Nw"}
-		request = rq.post(url,headers=_headers,json=data)
+
+	if request.status_code == 200:
 		print('Success - Swiggy')
 		print(request.json())
 	else:
-		pass
-
-	#if request.status_code == 200:
-	#	print('Success - Swiggy')
-	#	print(request.json())
-	#else:
-	#	print('Failed - Swiggy')
+		print('Failed - Swiggy')
 
 	
 
-#for x in range(0,quantity):
-#	flipkart_api()
-#	unacademy_api()
-#	grofers_api()
-#	confirmtkt_api()
-swiggy_api()
+for x in range(0,quantity):
+	flipkart_api()
+	unacademy_api()
+	grofers_api()
+	confirmtkt_api()
+	swiggy_api()
