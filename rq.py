@@ -206,7 +206,7 @@ def zomato_api():
 		'Sec-Fetch-Site': 'same-origin',
 	}
 
-	data = {"country_id":1,"phone":""mobno,"verification_type":"sms","method":"phone"}
+	data = {"country_id":1,"phone":""+mobno,"verification_type":"sms","method":"phone"}
 
 	requests = rq.post(url,headers=_headers,json=data)
 
