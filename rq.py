@@ -150,26 +150,19 @@ def swiggy_api():
 		data = {"mobile":""+mobno,"name":"hello","email":"123454321@yahoo.com","password":"123454321","referral":"","otp":"","_csrf":"Y3EUNMSPJWwn-Jrfj6JoXJcCI9jzToqKqcqekwKI"}
 
 		requests = rq.post(url,headers=_headers,json=data)
-		
+
 		print('Success - Swiggy')
 	
 	elif request.json()['statusCode'] == 0:
 		print('Success')
 
 	else:
-		print('Success - Swiggy')
+		print('Failed - Swiggy')
 
-	#if request.json()['statusCode'] == 1:
-	#	print('Success - Swiggy')
-	#else:
-	#	print('Failed - Swiggy')
-		
-
-	
 
 #for x in range(0,quantity):
-#	flipkart_api()
+flipkart_api()
 #	unacademy_api()
 #	grofers_api()
 #	confirmtkt_api()
-swiggy_api()
+#	swiggy_api()
