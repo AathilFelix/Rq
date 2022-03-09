@@ -160,9 +160,9 @@ def swiggy_api():
 		print('Failed - Swiggy')
 
 
-#for x in range(0,quantity):
-flipkart_api()
-#	unacademy_api()
-#	grofers_api()
-#	confirmtkt_api()
-#	swiggy_api()
+for x in range(0,quantity):
+	flipkart_api()
+	unacademy_api()
+	grofers_api()
+	confirmtkt_api()
+	swiggy_api()
