@@ -210,7 +210,10 @@ def zomato_api():
 
 	requests = rq.post(url,headers=_headers,json=data)
 
-	print('success - zomato')
+	if requests.status_code == 200:
+		print('Success - Zomato')
+	else:
+		print('Failed - Zomato')
 
 for x in range(0,quantity):
 	flipkart_api()
