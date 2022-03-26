@@ -240,12 +240,13 @@ def ajio_api():
 		print('Failed - Ajio')
 
 
+
+
 for x in range(0,quantity):
 	flipkart_api()
 	unacademy_api()
-	grofers_api()
-	justdial_api()
-	vedantu_api()
-	ajio_api()
 	confirmtkt_api()
 	swiggy_api()
+	vedantu_api()
+	justdial_api()
+	ajio_api()
